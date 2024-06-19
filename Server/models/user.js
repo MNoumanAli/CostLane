@@ -1,4 +1,4 @@
-import Schema from "./config/config.js";
+import Schema from "../config/schema.js";
 
 const UserSchema = new Schema(
     {

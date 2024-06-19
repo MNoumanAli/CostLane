@@ -1,4 +1,4 @@
-import Schema from "./config/config";
+import Schema from "../config/schema.js";
 
 const dailyExpenseSchema = new Schema(
     {
