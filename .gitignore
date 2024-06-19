@@ -2,3 +2,4 @@
 # Server
 /Server/node_modules
 /Server/*.json
+/Server/*.env
