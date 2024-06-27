@@ -14,12 +14,10 @@ const dailyExpenseSchema = new Schema(
             type : Schema.Types.ObjectId,
             ref : 'Interval',
         },
-        expense : {
-            type : [{
-                item : String,
-                cost : Number,
-            }],
-        }
+        expenses : {
+            type : [Schema.Types.ObjectId],
+            ref : 'Expense'
+        },
     }
 );
 
