@@ -3,7 +3,7 @@ import authentication from "../middlewares/authentication";
 import validateSchema from "../middlewares/validateSchema";
 import intervalSchema from "../schemas/intervalSchema";
 
-const intervalRoutes = express.Router();
+const intervalRouter = express.Router();
 const validateIntervalSchema = validateSchema(intervalSchema);
 
 intervalRoutes.get('/get', authentication, (req,res)=> {res.status(200).send({});});
@@ -12,4 +12,4 @@ intervalRoutes.post('/post', authentication, validateIntervalSchema, (req,res)=>
 intervalRoutes.put('/update/:id', authentication, (req,res)=> {res.status(200).send({});});
 intervalRoutes.delete('/delete/:id', authentication, (req,res)=> {res.status(200).send({});});
 
-export default intervalRoutes;
+export default intervalRouter;
