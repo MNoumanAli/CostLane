@@ -1,7 +1,7 @@
 import user from "../Models/User"
 import bcrypt from 'bcrypt'
 
-const createUser = async(data) => {
+export const createUser = async(data) => {
     try {
         const newUser  = new user({
             firstname : data.firstname,
@@ -17,7 +17,7 @@ const createUser = async(data) => {
     }
 };
 
-const getUserById = async (id) => {
+export const getUserById = async (id) => {
     try {
         const userData = await user.findById({_id : id});
         return userData;
@@ -26,7 +26,7 @@ const getUserById = async (id) => {
     }
 };
 
-const getUserByEmail = async (email) => {
+export const getUserByEmail = async (email) => {
     try {
         const userData = await user.findOne({email : email});
         return userData;
@@ -35,7 +35,7 @@ const getUserByEmail = async (email) => {
     }
 };
 
-const getAllUsers = async (email) => {
+export const getAllUsers = async (email) => {
     try {
         const userData = await user.findAll();
         return userData;
@@ -44,7 +44,7 @@ const getAllUsers = async (email) => {
     }
 };
 
-const changeUserPassword = async (id,hashedPassword) => {
+export const changeUserPassword = async (id,hashedPassword) => {
     try {
         await user.findByIdAndUpdate(
             {_id : id},
@@ -55,7 +55,7 @@ const changeUserPassword = async (id,hashedPassword) => {
     }
 };
 
-const verifyUserPassword = async (id, password) => {
+export const verifyUserPassword = async (id, password) => {
     try {
         const userPassword = await user.findById({_id : id}).password;
         const hashedPassword = await bcrypt.compare(password, userPassword);
