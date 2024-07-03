@@ -55,11 +55,21 @@ export const changeUserPassword = async (id,hashedPassword) => {
     }
 };
 
-export const verifyUserPassword = async (id, password) => {
+export const verifyUserPasswordByEmail = async (email, password) => {
     try {
-        const userPassword = await user.findById({_id : id}).password;
+        const userPassword = await user.findOne({email : email}).password;
         const hashedPassword = await bcrypt.compare(password, userPassword);
         if(hashedPassword) return true;
+        else return false;   
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const userExistByEmail = async (email) => {
+    try {
+        const user = await user.findOne({email : email});
+        if(user) return true;
         else return false;   
     } catch (error) {
         throw error;
