@@ -29,3 +29,39 @@ const createNewExpense = async (cost, item) => {
         throw error;
     }
 };
+
+const deleteExpenseById = async (id) => {
+    try {
+        const deletedItem = await expense.findByIdAndDelete(id);
+        return deletedItem
+    } catch (error) {
+        throw error;
+    }
+}
+
+const deleteExpenseByIds = async (id) => {
+    try {
+        const deletedItems = await expense.deleteMany({_id : { $in : id}});
+        return deletedItems;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const updateExpenseCostById = async (id, cost) => {
+    try {
+        const updatedItem = expense.updateOne({_id,id}, {cost : cost});
+        return updatedItem;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const updateExpenseItemById = async (id, item) => {
+    try {
+        const updatedItem = expense.updateOne({_id,id}, {item : item});
+        return updatedItem;
+    } catch (error) {
+        throw error;
+    }
+}
